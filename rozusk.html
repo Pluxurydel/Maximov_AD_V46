@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Розыск</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Розыск</h1>
+        <nav>
+            <ul>
+              
+                <li><a href="violations.html">Нарушения</a></li>
+                <li><a href="drivers.html">Водители</a></li>
+                <li><a href="rozusk.html">Розыск</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Розыск</h2>
+            <table id="vehiclesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Номер</th>
+                        <th>Марка</th>
+                        <th>Модель</th>
+                        <th>Причина</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>Данные авто</h2>
+            <form id="addVehicleForm">
+                <label for="number">Номер:</label>
+                <input type="text" id="number" name="number" required>
+                
+                <label for="make">Марка:</label>
+                <input type="text" id="make" name="make" required>
+                
+                <label for="model">Модель:</label>
+                <input type="text" id="model" name="model" required>
+                
+                <label for="year">Причина розыска</label>
+                <input type="text" id="year" name="year" required>
+                
+                <button type="submit">Добавить</button>
+            </form>
+        </section>
+    </main>
+  
+
+    <script>
+       
+        document.getElementById('addVehicleForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+            const number = document.getElementById('number').value;
+            const make = document.getElementById('make').value;
+            const model = document.getElementById('model').value;
+            const year = document.getElementById('year').value;
+
+            const id = Date.now();
+
+            const table = document.getElementById('vehiclesTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.insertCell(0).textContent = id;
+            newRow.insertCell(1).textContent = number;
+            newRow.insertCell(2).textContent = make;
+            newRow.insertCell(3).textContent = model;
+            newRow.insertCell(4).textContent = year;
+
+            document.getElementById('addVehicleForm').reset();
+        });
+    </script>
+</body>
+</html>

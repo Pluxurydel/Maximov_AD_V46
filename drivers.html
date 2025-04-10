@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Водители</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Водители</h1>
+        <nav>
+            <ul>
+              
+                <li><a href="violations.html">Нарушения</a></li>
+                <li><a href="drivers.html">Водители</a></li>
+                <li><a href="rozusk.html">Розыск</a></li>
+             
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Список водителей</h2>
+            <table id="driversTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ФИО</th>
+                        <th>Номер прав</th>
+                        <th>Дата рождения</th>
+                    </tr>
+                </thead>
+                <tbody>
+             
+                </tbody>
+            </table>
+        </section>
+        <section>
+            <h2>Добавить водителя</h2>
+            <form id="addDriverForm">
+                <label for="fullName">ФИО:</label>
+                <input type="text" id="fullName" name="fullName" required>
+                
+                <label for="licenseNumber">Номер прав:</label>
+                <input type="text" id="licenseNumber" name="licenseNumber" required>
+                
+                <label for="dob">Дата рождения:</label>
+                <input type="date" id="dob" name="dob" required>
+                
+                <button type="submit">Добавить</button>
+            </form>
+        </section>
+    </main>
+    
+
+    <script>
+        document.getElementById('addDriverForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const fullName = document.getElementById('fullName').value;
+            const licenseNumber = document.getElementById('licenseNumber').value;
+            const dob = document.getElementById('dob').value;
+
+            const id = Date.now();
+
+            const table = document.getElementById('driversTable').getElementsByTagName('tbody')[0];
+            const newRow = table.insertRow();
+
+            newRow.insertCell(0).textContent = id;
+            newRow.insertCell(1).textContent = fullName;
+            newRow.insertCell(2).textContent = licenseNumber;
+            newRow.insertCell(3).textContent = dob;
+
+            document.getElementById('addDriverForm').reset();
+        });
+    </script>
+</body>
+</html>
